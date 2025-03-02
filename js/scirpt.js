@@ -20,20 +20,18 @@ const totalTaskEl = document.getElementById("total-task");
 const activityLogEl = document.getElementById("activity-log");
 let completedTaskCounter = completedTaskEl.innerText;
 let totalTaskCounter = totalTaskEl.innerText;
-// console.log("completedTaskCounter after loop:", completedTaskCounter);
-// console.log("totalTaskCounter after loop:", totalTaskCounter);
-// activityLogEl.innerText = "Tanbin";
+
 const completeBtns = document.getElementsByClassName('complete-btn');
 for(const completeBtn of completeBtns) {
     completeBtn.addEventListener("click", function(e){
-        alert("dsfhgsfh");
-        completedTaskCounter++; // increase the counter for complete task
-        totalTaskCounter--; // decrease the counter for complete task
-        // console.log("headerCounter after loop:", completedTaskCounter);
+        alert("Board Updated Successfully");
+        completedTaskCounter++;
+        totalTaskCounter--; 
+
         completedTaskEl.innerText = completedTaskCounter;
         totalTaskEl.innerText = String(totalTaskCounter).padStart(2, '0');
         const taskTitle = completeBtn.parentNode.parentNode.parentNode.querySelector('h3').innerText;
-        // console.log("completeBtn parent:", taskTitle);
+        
         completeBtn.classList.add("btn-disabled");
         completeBtn.setAttribute("disabled", true);
         const activityText = `You have completed the task ${taskTitle} at ${today.toLocaleTimeString()}`;
@@ -41,7 +39,7 @@ for(const completeBtn of completeBtns) {
         "</div>";
         console.log("totalTaskCounter:", totalTaskCounter);
         if(totalTaskCounter === 0){
-            alert("congrats");
+            alert("congrats!!!You have completed all the current tasks");
         }
     });
 }
